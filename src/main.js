@@ -1,35 +1,29 @@
 const container = document.querySelector('.characters-container');
 
-const promises = [];
 
-
-const fetchFuturamaCharacters = async (id) => {
-  const response = await fetch(`https://futuramaapi.com/api/characters/${id}`);
+const fetchFuturamaCharacters = async () => {
+  const response = await fetch("https://futuramaapi.com/api/characters/?size=9");
   const data = await response.json();
   return data;
-}
+};
 
-for (let i = 1; i <= 9; i++) {
-  promises.push(fetchFuturamaCharacters(i));
-}
+const response = await fetchFuturamaCharacters();
+console.log(response);
+const characters = response.items;
 
-Promise.all(promises).then((characters) => {
-  characters.forEach(character => {
-    const characterElement = document.createElement("div");
-    characterElement.classList.add("character");
 
-    characterElement.innerHTML = `
-      <img src="${character.image}" alt="${character.name}" class="characters-image" />
-      <p class="characters-name">${character.name}</p>
-    `;
+for (let i = 0; i < characters.length; i++) {
+  const characterElement = document.createElement("div");
+  characterElement.classList.add("character");
+  console.log(characters[i]);
 
-    container.appendChild(characterElement);
-  });
-});
+  characterElement.innerHTML = `
+    <img src="${characters[i].image}" alt="${characters[i].name}" class="characters-image" />
+    <p class="characters-name">${characters[i].name}</p>
+  `;
 
-for (let i = 0; i < promises.length; i++) {
-  response(promises[i]);
-  console.log(promises[i]);
+
+  container.appendChild(characterElement);
 }
 
 
