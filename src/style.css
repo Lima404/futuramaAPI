@@ -1,0 +1,46 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: purple;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.characters-name{
+  width: 100px;
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: blueviolet;
+}
+
+.characters-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  grid-template-rows: repeat(3, auto);  /* 3 linhas */
+  gap: 20px;
+  padding: 20px;
+}
