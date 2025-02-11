@@ -1,6 +1,5 @@
 const container = document.querySelector('.characters-container');
 
-// Array para armazenar as promessas das requisições
 const promises = [];
 
 
@@ -10,12 +9,10 @@ const fetchFuturamaCharacters = async (id) => {
   return data;
 }
 
-// Criando múltiplas requisições
 for (let i = 1; i <= 9; i++) {
   promises.push(fetchFuturamaCharacters(i));
 }
 
-// Resolvendo todas as promessas e renderizando os personagens
 Promise.all(promises).then((characters) => {
   characters.forEach(character => {
     const characterElement = document.createElement("div");
